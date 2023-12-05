@@ -1,12 +1,12 @@
 import React from 'react'
 
+// Spring Boot 서버에 USD, JPY 현재 최다 검색 기업명 데이터 요청
 export async function RequestRealtimeData() {
     try {
-        const response = await fetch('http://192.168.55.136:8080/UpDn/SP/Request/Flask');
+        const response = await fetch('https://updn.kro.kr/UpDn/SP/Request/Flask');
 
         if(response.ok) {
             const data = await response.json();
-            console.log("OK");
             return data;
         }
         else {
@@ -19,9 +19,10 @@ export async function RequestRealtimeData() {
     }
 }
 
+// Spring Boot 서버에 키워드를 첨부하여 예측/근거 데이터 요청
 export async function RepuestGpt(keyWord) {
     try {
-        const response = await fetch('http://192.168.55.136:8080/UpDn/SP/Request/Gpt?keyWord=' + keyWord);
+        const response = await fetch('https://updn.kro.kr/UpDn/SP/Request/Gpt?keyWord=' + keyWord);
 
         if(response.ok) {
             const data = await response.json();
